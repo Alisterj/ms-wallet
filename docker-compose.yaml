@@ -1,0 +1,17 @@
+services:
+  postgres:
+    image: postgres:16.2
+    container_name: postgresql
+    restart: always
+    environment:
+      POSTGRES_PASSWORD: admin
+      POSTGRES_USER: admin
+      POSTGRES_DB: ms_wallet
+    ports:
+      - "5432:5432"
+    networks:
+      - app-network
+
+networks:
+  app-network:
+    driver: bridge
