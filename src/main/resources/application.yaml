@@ -1,3 +1,32 @@
 spring:
   application:
     name: ms-wallet
+  liquibase:
+    enabled: true
+    change-log: classpath:/db/changelog/changelog.xml
+  jpa:
+    show-sql: false
+    database: postgresql
+    hibernate:
+      ddl-auto: none
+      naming:
+        physical-strategy: org.hibernate.boot.model.naming.CamelCaseToUnderscoresNamingStrategy
+    open-in-view: false
+    properties:
+      hibernate:
+        proc:
+          param_null_passing: true
+        dialect: org.hibernate.dialect.PostgreSQLDialect
+        generate_statistics: false
+        format_sql: false
+    database-platform: org.hibernate.dialect.PostgreSQLDialect
+  datasource:
+    url: jdbc:postgresql://localhost:5432/ms_wallet
+    username: ms_wallet
+    password: ms_wallet
+    driver-class-name: org.postgresql.Driver
+    hikari:
+      idle-timeout: 30000
+      minimum-idle: 1
+      maximum-pool-size: 3
+      connection-timeout: 20000
