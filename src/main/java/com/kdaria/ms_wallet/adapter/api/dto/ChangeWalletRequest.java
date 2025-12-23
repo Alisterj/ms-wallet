@@ -1,6 +1,6 @@
-package com.kdaria.ms_wallet.api.dto;
+package com.kdaria.ms_wallet.adapter.api.dto;
 
-import com.kdaria.ms_wallet.api.OperationType;
+import com.kdaria.ms_wallet.adapter.api.OperationType;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.validation.constraints.*;
 

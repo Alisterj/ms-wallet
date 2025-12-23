@@ -1,6 +1,6 @@
 package com.kdaria.ms_wallet.domain.command;
 
-import com.kdaria.ms_wallet.api.OperationType;
+import com.kdaria.ms_wallet.adapter.api.OperationType;
 import org.jetbrains.annotations.NotNull;
 
 import java.math.BigDecimal;

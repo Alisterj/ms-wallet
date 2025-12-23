@@ -1,6 +1,6 @@
 package com.kdaria.ms_wallet.domain.model;
 
-import com.kdaria.ms_wallet.api.OperationType;
+import com.kdaria.ms_wallet.adapter.api.OperationType;
 import com.kdaria.ms_wallet.domain.exception.InsufficientFundsException;
 import lombok.*;
 import org.jetbrains.annotations.*;

@@ -1,7 +1,7 @@
-package com.kdaria.ms_wallet.api.mapper;
+package com.kdaria.ms_wallet.adapter.api.mapper;
 
 import com.kdaria.ms_wallet.domain.command.ChangeWalletCommand;
-import com.kdaria.ms_wallet.api.dto.ChangeWalletRequest;
+import com.kdaria.ms_wallet.adapter.api.dto.ChangeWalletRequest;
 import jakarta.validation.constraints.NotNull;
 import org.mapstruct.*;
 

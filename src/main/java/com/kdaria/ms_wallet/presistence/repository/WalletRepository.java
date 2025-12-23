@@ -1,8 +1,12 @@
 package com.kdaria.ms_wallet.presistence.repository;
 
 import com.kdaria.ms_wallet.presistence.entity.WalletEntity;
-import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.*;
 
-import java.util.UUID;
+import java.util.*;
 
-public interface WalletRepository extends JpaRepository<WalletEntity, UUID> {}
+public interface WalletRepository extends JpaRepository<WalletEntity, UUID> {
+
+  @Override
+  Optional<WalletEntity> findById(UUID uuid);
+}

@@ -1,4 +1,4 @@
-package com.kdaria.ms_wallet.api;
+package com.kdaria.ms_wallet.adapter.api;
 
 public enum OperationType {
   DEPOSIT,

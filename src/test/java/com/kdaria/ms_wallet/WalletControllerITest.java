@@ -1,6 +1,6 @@
 package com.kdaria.ms_wallet;
 
-import com.kdaria.ms_wallet.api.OperationType;
+import com.kdaria.ms_wallet.adapter.api.OperationType;
 import com.kdaria.ms_wallet.presistence.entity.WalletEntity;
 import com.kdaria.ms_wallet.presistence.repository.WalletRepository;
 import org.junit.jupiter.api.Test;
@@ -28,7 +28,7 @@ public class WalletControllerITest {
   private WalletRepository walletRepository;
 
   @Test
-  void When_ChangeWalletDeposit_Expect_Success() throws Exception {
+  void When_UpdateWalletDeposit_Expect_Success() throws Exception {
     mockMvc.perform(post("/api/v1/wallet")
         .param("walletId", "7f3b6c21-1b3d-4c5e-8f9a-1234567890ab")
         .param("operationType", OperationType.DEPOSIT.toString())
@@ -44,7 +44,7 @@ public class WalletControllerITest {
   }
 
   @Test
-  void When_ChangeWalletWithdraw_Expect_Success() throws Exception {
+  void When_UpdateWalletWithdraw_Expect_Success() throws Exception {
     mockMvc.perform(post("/api/v1/wallet")
         .param("walletId", "550e8400-e29b-41d4-a716-446655440000")
         .param("operationType", OperationType.WITHDRAW.toString())
@@ -60,7 +60,7 @@ public class WalletControllerITest {
   }
 
   @Test
-  void When_ChangeWalletWithNotExistentWalletId_Expect_BadRequest() throws Exception {
+  void When_UpdateWalletWithNotExistentWalletId_Expect_BadRequest() throws Exception {
     mockMvc.perform(post("/api/v1/wallet")
         .param("walletId", "9f3b6c21-1b3d-4c5e-8f9a-1234567890ab")
         .param("operationType", OperationType.DEPOSIT.toString())
@@ -71,7 +71,7 @@ public class WalletControllerITest {
   }
 
   @Test
-  void When_ChangeWalletWithTooMuchOutput_Expect_BadRequest() throws Exception {
+  void When_UpdateWalletWithTooMuchOutput_Expect_BadRequest() throws Exception {
     mockMvc.perform(post("/api/v1/wallet")
         .param("walletId", "7f3b6c21-1b3d-4c5e-8f9a-1234567890ab")
         .param("operationType", OperationType.WITHDRAW.toString())

@@ -2,17 +2,19 @@ package com.kdaria.ms_wallet.presistence.entity;
 
 import jakarta.persistence.*;
 import lombok.*;
-import org.springframework.stereotype.Service;
+import org.jetbrains.annotations.NotNull;
 
 import java.math.BigDecimal;
 import java.util.UUID;
 
-@Getter
 @Entity
+@Getter
 @Setter
 @Table(name = "wallet")
 public class WalletEntity {
   @Id
+  @NotNull
   private UUID id;
+  @NotNull
   private BigDecimal balance;
 }

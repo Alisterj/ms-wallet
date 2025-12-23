@@ -1,6 +1,6 @@
 package com.kdaria.ms_wallet.domain.usecase;
 
-import com.kdaria.ms_wallet.api.OperationType;
+import com.kdaria.ms_wallet.adapter.api.OperationType;
 import com.kdaria.ms_wallet.domain.command.ChangeWalletCommand;
 import com.kdaria.ms_wallet.domain.model.Wallet;
 import com.kdaria.ms_wallet.domain.port.WalletProvider;
