@@ -11,10 +11,14 @@ import java.util.UUID;
 @Getter
 @Setter
 @Table(name = "wallet")
+@AllArgsConstructor
+@NoArgsConstructor
 public class WalletEntity {
+
   @Id
   @NotNull
   private UUID id;
+
   @NotNull
   private BigDecimal balance;
 }

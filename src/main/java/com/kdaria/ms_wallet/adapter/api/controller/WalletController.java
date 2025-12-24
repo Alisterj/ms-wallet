@@ -1,8 +1,8 @@
 package com.kdaria.ms_wallet.adapter.api.controller;
 
-import com.kdaria.ms_wallet.adapter.api.dto.ChangeWalletRequest;
+import com.kdaria.ms_wallet.adapter.api.dto.UpdateBalanceWalletRequest;
 import com.kdaria.ms_wallet.adapter.api.mapper.WalletControllerMapper;
-import com.kdaria.ms_wallet.domain.command.ChangeWalletCommand;
+import com.kdaria.ms_wallet.domain.command.UpdateBalanceWalletCommand;
 import com.kdaria.ms_wallet.domain.usecase.*;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.media.*;
@@ -22,7 +22,7 @@ import java.util.UUID;
 @RequestMapping("/api/v1")
 @Tag(name = "API для работы с кошлельком")
 public class WalletController {
-  private final ChangeWalletUseCase changeWalletUseCase;
+  private final UpdateBalanceWalletUseCase updateBalanceWalletUseCase;
   private final GetWalletBalanceUseCase getWalletBalanceUseCase;
   private final WalletControllerMapper mapper;
 
@@ -32,9 +32,9 @@ public class WalletController {
   @ApiResponse(responseCode = "404", description = "Правило не найдено", content = @Content(schema = @Schema))
   @ApiResponse(responseCode = "400", description = "Некорректные данные", content = @Content(schema = @Schema))
   @ApiResponse(responseCode = "500", description = "Ошибка выполнения операции", content = @Content(schema = @Schema))
-  public ResponseEntity<Void> updateBalance(@Valid @NotNull ChangeWalletRequest request) {
-    ChangeWalletCommand command = mapper.map(request);
-    changeWalletUseCase.change(command);
+  public ResponseEntity<Void> updateBalance(@Valid @NotNull UpdateBalanceWalletRequest request) {
+    UpdateBalanceWalletCommand command = mapper.map(request);
+    updateBalanceWalletUseCase.creatingUpdateRequest(command);
     return ResponseEntity.ok().build();
   }
 

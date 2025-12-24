@@ -5,4 +5,7 @@
     <changeSet id="001" author="K_Daria">
         <sqlFile encoding="UTF-8" path="changes/001-add-table-wallet.sql" relativeToChangelogFile="true"/>
     </changeSet>
+    <changeSet id="002" author="K_Daria">
+        <sqlFile encoding="UTF-8" path="changes/002-add-table-operation-wallet.sql" relativeToChangelogFile="true"/>
+    </changeSet>
 </databaseChangeLog>

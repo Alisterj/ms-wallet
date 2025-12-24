@@ -1,6 +1,6 @@
 package com.kdaria.ms_wallet;
 
-import com.kdaria.ms_wallet.adapter.api.OperationType;
+import com.kdaria.ms_wallet.en.OperationType;
 import com.kdaria.ms_wallet.presistence.entity.WalletEntity;
 import com.kdaria.ms_wallet.presistence.repository.WalletRepository;
 import org.junit.jupiter.api.Test;
