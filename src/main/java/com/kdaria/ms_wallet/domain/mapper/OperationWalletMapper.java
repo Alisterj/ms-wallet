@@ -8,9 +8,9 @@ import org.mapstruct.*;
 @Mapper(componentModel = "spring")
 public interface OperationWalletMapper {
 
+  @Mapping(target = "id", ignore = true)
   @Mapping(target = "sum", source = "amount")
   @Mapping(target = "type", source = "operationType")
   @Mapping(target = "createdDate", expression = "java(LocalDateTime.now())")
-  @Mapping(target = "processed", expression = "java(Boolean.FALSE)")
   OperationWallet map(UpdateBalanceWalletCommand command);
 }

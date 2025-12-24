@@ -26,24 +26,10 @@ public class WalletService implements WalletProvider {
   }
 
   @Override
-  public void checkWallet(@NotNull UUID walletId, @NotNull BigDecimal amount) {
-    WalletEntity entity = walletRepository.findById(walletId)
-      .orElseThrow(() -> new WalletNotFoundException("the wallet was not found", walletId));
-
-    if (entity.getBalance().compareTo(amount) < 0) {
-      throw new InsufficientFundsException(
-        String.format("Insufficient funds: balance is %s, attempted to withdraw %s",
-          entity.getBalance(), amount)
-      );
-    }
-  }
-
-  @Override
-  public void updateBalance(@NotNull UUID walletId, @NotNull OperationType operationType, @NotNull BigDecimal amount) {
-    walletRepository.findById(walletId).orElseThrow(() -> new WalletNotFoundException("the wallet was not found", walletId));
+  public void updateBalance(@NotNull Wallet wallet, @NotNull OperationType operationType, @NotNull BigDecimal amount) {
     if(operationType == OperationType.WITHDRAW) {
       amount = amount.negate();
     }
-    walletRepository.updateBalance(walletId, amount);
+    walletRepository.updateBalance(wallet.getWalletId(), amount);
   }
 }

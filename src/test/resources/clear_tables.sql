@@ -1,3 +1,1 @@
-TRUNCATE TABLE wallet;
-TRUNCATE TABLE operation_wallet;
-TRUNCATE TABLE history_transaction;
+TRUNCATE TABLE history_transaction, operation_wallet, wallet CASCADE;

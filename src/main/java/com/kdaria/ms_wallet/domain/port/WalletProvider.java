@@ -11,8 +11,5 @@ public interface WalletProvider {
 
   Optional<Wallet> findWalletById(@NotNull UUID uuid);
 
-  void checkWallet(@NotNull UUID uuid, @NotNull BigDecimal amount);
-
-  void updateBalance(@NotNull UUID uuid, @NotNull OperationType operationType, @NotNull BigDecimal amount);
-
+  void updateBalance(@NotNull Wallet wallet, @NotNull OperationType operationType, @NotNull BigDecimal amount);
 }

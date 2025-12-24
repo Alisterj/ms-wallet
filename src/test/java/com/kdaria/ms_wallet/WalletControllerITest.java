@@ -26,8 +26,6 @@ public class WalletControllerITest {
   private MockMvc mockMvc;
   @Autowired
   private OperationWalletRepository operationWalletRepository;
-  @Autowired
-  private WalletRepository walletRepository;
 
   @Test
   void When_UpdateWalletDeposit_Expect_Success() throws Exception {
@@ -40,26 +38,29 @@ public class WalletControllerITest {
         status().isOk()
       );
 
-//    WalletEntity entity = walletRepository.findById(UUID.fromString("7f3b6c21-1b3d-4c5e-8f9a-1234567890ab")).get();
-//    assertThat(entity.getBalance())
-//      .as("Баланс кошелька должен увеличиться на %s", 20)
-//      .isEqualByComparingTo(new BigDecimal("2520.50"));
+    OperationWalletEntity entity = operationWalletRepository.findAll()
+      .stream().filter(e -> e.getWallet().getId().equals(walletId)).findFirst().get();
+    assertThat(entity.getSum())
+      .as("Заявка должна иметь сумму %s", 20)
+      .isEqualByComparingTo(new BigDecimal("20.00"));
   }
 
   @Test
   void When_UpdateWalletWithdraw_Expect_Success() throws Exception {
+    UUID walletId = UUID.fromString("550e8400-e29b-41d4-a716-446655440000");
     mockMvc.perform(post("/api/v1/wallet")
-        .param("walletId", "550e8400-e29b-41d4-a716-446655440000")
+        .param("walletId", walletId.toString())
         .param("operationType", OperationType.WITHDRAW.toString())
         .param("amount", "100"))
       .andExpectAll(
         status().isOk()
       );
 
-//    WalletEntity entity = walletRepository.findById(UUID.fromString("550e8400-e29b-41d4-a716-446655440000")).get();
-//    assertThat(entity.getBalance())
-//      .as("Баланс кошелька должен уменьгиться на %s", 100)
-//      .isEqualByComparingTo(new BigDecimal("50.00"));
+    OperationWalletEntity entity = operationWalletRepository.findAll()
+      .stream().filter(e -> e.getWallet().getId().equals(walletId)).findFirst().get();
+    assertThat(entity.getSum())
+      .as("Заявка должна иметь сумму %s", 100)
+      .isEqualByComparingTo(new BigDecimal("100.00"));
   }
 
   @Test
@@ -80,7 +81,7 @@ public class WalletControllerITest {
         .param("operationType", OperationType.WITHDRAW.toString())
         .param("amount", "5000000"))
       .andExpectAll(
-        status().isUnprocessableContent()
+        status().isForbidden()
       );
   }
 

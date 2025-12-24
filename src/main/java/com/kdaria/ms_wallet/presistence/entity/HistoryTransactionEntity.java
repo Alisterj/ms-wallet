@@ -22,8 +22,9 @@ public class HistoryTransactionEntity {
   private Long id;
 
   @NotNull
-  @Column(name = "wallet_id")
-  private UUID walletId;
+  @JoinColumn(name = "wallet_id", nullable = false)
+  @ManyToOne(fetch = FetchType.LAZY)
+  private WalletEntity wallet;
 
   @NotNull
   private BigDecimal sum;

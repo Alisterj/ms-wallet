@@ -2,9 +2,9 @@ package com.kdaria.ms_wallet.presistence.service;
 
 import com.kdaria.ms_wallet.domain.model.OperationWallet;
 import com.kdaria.ms_wallet.domain.port.OperationWalletProvider;
-import com.kdaria.ms_wallet.presistence.entity.OperationWalletEntity;
+import com.kdaria.ms_wallet.presistence.entity.*;
 import com.kdaria.ms_wallet.presistence.mapper.OperationWalletEntityMapper;
-import com.kdaria.ms_wallet.presistence.repository.OperationWalletRepository;
+import com.kdaria.ms_wallet.presistence.repository.*;
 import lombok.RequiredArgsConstructor;
 import org.jetbrains.annotations.NotNull;
 import org.springframework.data.domain.*;
@@ -16,11 +16,13 @@ import java.util.List;
 @RequiredArgsConstructor
 public class OperationWalletService implements OperationWalletProvider {
   private final OperationWalletRepository operationWalletRepository;
+  private final WalletRepository walletRepository;
   private final OperationWalletEntityMapper mapper;
 
   @Override
   public void save(@NotNull OperationWallet operationWallet) {
-    operationWalletRepository.save(mapper.map(operationWallet));
+    WalletEntity walletEntity = walletRepository.getReferenceById(operationWallet.getWalletId());
+    operationWalletRepository.save(mapper.map(operationWallet, walletEntity));
   }
 
   @Override

@@ -26,7 +26,4 @@ public class OperationWallet {
 
   @NotNull
   private LocalDateTime createdDate;
-
-  @NotNull
-  private Boolean processed;
 }

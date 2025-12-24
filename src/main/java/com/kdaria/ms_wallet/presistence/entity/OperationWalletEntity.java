@@ -7,7 +7,6 @@ import org.jetbrains.annotations.NotNull;
 
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
-import java.util.UUID;
 
 @Entity
 @Getter
@@ -22,8 +21,9 @@ public class OperationWalletEntity {
   private Long id;
 
   @NotNull
-  @Column(name = "wallet_id")
-  private UUID walletId;
+  @JoinColumn(name = "wallet_id", nullable = false)
+  @ManyToOne(fetch = FetchType.LAZY)
+  private WalletEntity wallet;
 
   @NotNull
   private BigDecimal sum;
@@ -35,7 +35,4 @@ public class OperationWalletEntity {
   @NotNull
   @Column(name = "created_date")
   private LocalDateTime createdDate;
-
-  @NotNull
-  private Boolean processed;
 }

@@ -12,40 +12,37 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.jdbc.Sql;
 
+import java.math.BigDecimal;
 import java.util.*;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
 @SpringBootTest
 @ExtendWith(MockitoExtension.class)
-@Sql(scripts = "/clear_tables.sql", executionPhase = Sql.ExecutionPhase.BEFORE_TEST_CLASS)
+@Sql(scripts = {"/clear_tables.sql",
+                "/udate_balance.sql"}, executionPhase = Sql.ExecutionPhase.BEFORE_TEST_METHOD)
 public class UpdateBalanceWalletOutboxProcessorITest {
   @Autowired
   private UpdateBalanceWalletOutboxProcessor processor;
 
   @Autowired
   private OperationWalletRepository operationRepository;
-
   @Autowired
   private WalletRepository walletRepository;
+  @Autowired
+  private HistoryTransactionRepository historyTransactionRepository;
 
   @Test
-  @Sql(scripts = "/udate_balance.sql", executionPhase = Sql.ExecutionPhase.BEFORE_TEST_METHOD)
-  @DisplayName("Должен обработать все записи со статусом processed = FALSE из SQL файла")
   void shouldProcessPendingOperationsFromSql() {
-    long initialPendingCount = operationRepository.findAll().stream()
-      .filter(op -> !op.getProcessed())
-      .count();
-    assert initialPendingCount == 2;
-
     processor.processPendingEvent();
 
-    List<OperationWalletEntity> allOperations = operationRepository.findAll();
-    boolean allProcessed = allOperations.stream().allMatch(OperationWalletEntity::getProcessed);
+    assertThat(historyTransactionRepository.findAll().size()).isEqualTo(4);
+    assertThat(operationRepository.findAll().size()).isEqualTo(0);
 
-    assertThat(allProcessed).isTrue();
+    WalletEntity walletEntity = walletRepository.findById(UUID.fromString("550e8400-e29b-41d4-a716-446655440000")).orElseThrow();
+    assertThat(walletEntity.getBalance()).isEqualByComparingTo("200.00");
 
-    WalletEntity wallet = walletRepository.findById(UUID.fromString("a1b2c3d4-e5f6-4a5b-8c7d-9e0f1a2b3c4d")).orElseThrow();
-    assertThat(wallet.getBalance()).isEqualByComparingTo("100.00");
+    walletEntity =  walletRepository.findById(UUID.fromString("7f3b6c21-1b3d-4c5e-8f9a-1234567890ab")).orElseThrow();
+    assertThat(walletEntity.getBalance()).isEqualByComparingTo("3900.50");
   }
 }
