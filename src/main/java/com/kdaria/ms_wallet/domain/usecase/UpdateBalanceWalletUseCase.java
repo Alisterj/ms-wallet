@@ -19,13 +19,12 @@ public class UpdateBalanceWalletUseCase {
   private final OperationWalletMapper mapper;
 
   @Transactional
-  public void creatingUpdateRequest(@NotNull UpdateBalanceWalletCommand command) {
-    Wallet wallet = walletProvider.findWalletById(command.walletId())
+  public void createUpdateRequest(@NotNull UpdateBalanceWalletCommand command) {
+    walletProvider.findWalletById(command.walletId())
       .orElseThrow(() -> new WalletNotFoundException("the wallet was not found", command.walletId()));
 
     if (command.operationType() == OperationType.WITHDRAW) {
-      wallet.withdraw(command.amount());
-      walletProvider.save(wallet);
+      walletProvider.checkWallet(command.walletId(), command.amount());
     }
 
     OperationWallet operationWallet = mapper.map(command);

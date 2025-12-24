@@ -14,8 +14,8 @@ import java.util.UUID;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-@Table(name = "operation_wallet")
-public class OperationWalletEntity {
+@Table(name = "history_transaction")
+public class HistoryTransactionEntity {
 
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -35,7 +35,4 @@ public class OperationWalletEntity {
   @NotNull
   @Column(name = "created_date")
   private LocalDateTime createdDate;
-
-  @NotNull
-  private Boolean processed;
 }

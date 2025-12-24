@@ -1,41 +1,30 @@
-package com.kdaria.ms_wallet.presistence.entity;
+package com.kdaria.ms_wallet.domain.model;
 
 import com.kdaria.ms_wallet.en.OperationType;
 import jakarta.persistence.*;
 import lombok.*;
-import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.*;
 
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
 import java.util.UUID;
 
-@Entity
 @Getter
-@Setter
-@NoArgsConstructor
 @AllArgsConstructor
-@Table(name = "operation_wallet")
-public class OperationWalletEntity {
+public class HistoryTransaction {
 
-  @Id
-  @GeneratedValue(strategy = GenerationType.IDENTITY)
+  @Nullable
   private Long id;
 
   @NotNull
-  @Column(name = "wallet_id")
   private UUID walletId;
 
   @NotNull
   private BigDecimal sum;
 
   @NotNull
-  @Enumerated(EnumType.STRING)
   private OperationType type;
 
   @NotNull
-  @Column(name = "created_date")
   private LocalDateTime createdDate;
-
-  @NotNull
-  private Boolean processed;
 }

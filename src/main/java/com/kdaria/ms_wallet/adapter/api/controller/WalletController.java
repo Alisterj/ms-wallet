@@ -32,9 +32,9 @@ public class WalletController {
   @ApiResponse(responseCode = "404", description = "Правило не найдено", content = @Content(schema = @Schema))
   @ApiResponse(responseCode = "400", description = "Некорректные данные", content = @Content(schema = @Schema))
   @ApiResponse(responseCode = "500", description = "Ошибка выполнения операции", content = @Content(schema = @Schema))
-  public ResponseEntity<Void> updateBalance(@Valid @NotNull UpdateBalanceWalletRequest request) {
+  public ResponseEntity<Void> updateBalanceWallet(@Valid @NotNull UpdateBalanceWalletRequest request) {
     UpdateBalanceWalletCommand command = mapper.map(request);
-    updateBalanceWalletUseCase.creatingUpdateRequest(command);
+    updateBalanceWalletUseCase.createUpdateRequest(command);
     return ResponseEntity.ok().build();
   }
 

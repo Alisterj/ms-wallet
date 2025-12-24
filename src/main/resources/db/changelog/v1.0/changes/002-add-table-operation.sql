@@ -16,13 +16,12 @@ COMMENT ON COLUMN operation_wallet.wallet_id IS 'Идентификатор ко
 COMMENT ON COLUMN operation_wallet.sum IS 'Сумма операции';
 COMMENT ON COLUMN operation_wallet.type IS 'Тип операции';
 COMMENT ON COLUMN operation_wallet.created_date IS 'Дата операции';
-COMMENT ON COLUMN operation_wallet.status IS 'Статус операции';
 
 COMMENT ON TABLE wallet IS 'Таблица для хранения информации о кошельке';
 COMMENT ON COLUMN wallet.id IS 'Идентификатор записи';
 COMMENT ON COLUMN wallet.balance IS 'Баланс кошелька';
 
-CREATE TABLE transaction_history(
+CREATE TABLE history_transaction(
     id           BIGINT NOT NULL GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
     wallet_id    UUID NOT NULL,
     sum          DECIMAL(19,2) NOT NULL,
@@ -30,9 +29,9 @@ CREATE TABLE transaction_history(
     created_date TIMESTAMP NOT NULL
 );
 
-COMMENT ON TABLE transaction_history IS 'Таблица хранения истории транзакций';
-COMMENT ON COLUMN transaction_history.id IS 'Идентификатор записи';
-COMMENT ON COLUMN transaction_history.wallet_id IS 'Идентификатор кошелька';
-COMMENT ON COLUMN transaction_history.sum IS 'Сумма операции';
-COMMENT ON COLUMN transaction_history.type IS 'Тип операции';
-COMMENT ON COLUMN transaction_history.created_date IS 'Дата операции';
+COMMENT ON TABLE history_transaction IS 'Таблица хранения истории транзакций';
+COMMENT ON COLUMN history_transaction.id IS 'Идентификатор записи';
+COMMENT ON COLUMN history_transaction.wallet_id IS 'Идентификатор кошелька';
+COMMENT ON COLUMN history_transaction.sum IS 'Сумма операции';
+COMMENT ON COLUMN history_transaction.type IS 'Тип операции';
+COMMENT ON COLUMN history_transaction.created_date IS 'Дата операции';

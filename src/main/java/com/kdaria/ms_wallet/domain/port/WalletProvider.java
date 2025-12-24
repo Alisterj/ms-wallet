@@ -1,7 +1,7 @@
 package com.kdaria.ms_wallet.domain.port;
 
-import com.kdaria.ms_wallet.domain.model.Wallet;
-import com.kdaria.ms_wallet.presistence.entity.WalletEntity;
+import com.kdaria.ms_wallet.domain.model.*;
+import com.kdaria.ms_wallet.en.OperationType;
 import org.jetbrains.annotations.NotNull;
 
 import java.math.BigDecimal;
@@ -11,7 +11,8 @@ public interface WalletProvider {
 
   Optional<Wallet> findWalletById(@NotNull UUID uuid);
 
-  void save(@NotNull Wallet wallet);
+  void checkWallet(@NotNull UUID uuid, @NotNull BigDecimal amount);
 
-  void updateBalance(@NotNull UUID uuid, @NotNull BigDecimal amount);
+  void updateBalance(@NotNull UUID uuid, @NotNull OperationType operationType, @NotNull BigDecimal amount);
+
 }

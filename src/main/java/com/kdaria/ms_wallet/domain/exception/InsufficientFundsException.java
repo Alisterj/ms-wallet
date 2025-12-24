@@ -6,7 +6,5 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 @ResponseStatus(HttpStatus.UNPROCESSABLE_CONTENT)
 public class InsufficientFundsException extends RuntimeException {
 
-  public InsufficientFundsException() {
-    super("Insufficient funds in the account");
-  }
+  public InsufficientFundsException(String message) {}
 }

@@ -1,14 +1,15 @@
 package com.kdaria.ms_wallet.domain.model;
 
 import com.kdaria.ms_wallet.en.OperationType;
-import lombok.RequiredArgsConstructor;
+import lombok.*;
 import org.jetbrains.annotations.*;
 
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
 import java.util.UUID;
 
-@RequiredArgsConstructor
+@Getter
+@AllArgsConstructor
 public class OperationWallet {
 
   @Nullable
