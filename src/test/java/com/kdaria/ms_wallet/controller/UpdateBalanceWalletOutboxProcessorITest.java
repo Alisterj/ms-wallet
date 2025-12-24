@@ -1,24 +1,21 @@
-package com.kdaria.ms_wallet;
+package com.kdaria.ms_wallet.controller;
 
 import com.kdaria.ms_wallet.adapter.outbox.UpdateBalanceWalletOutboxProcessor;
-import com.kdaria.ms_wallet.domain.model.*;
+import com.kdaria.ms_wallet.config.AppTest;
 import com.kdaria.ms_wallet.presistence.entity.*;
 import com.kdaria.ms_wallet.presistence.repository.*;
 import org.junit.jupiter.api.*;
 import org.junit.jupiter.api.extension.ExtendWith;
-import org.mockito.*;
 import org.mockito.junit.jupiter.MockitoExtension;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.jdbc.Sql;
 
-import java.math.BigDecimal;
 import java.util.*;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-@SpringBootTest
-@ExtendWith(MockitoExtension.class)
+@AppTest
 @Sql(scripts = {"/clear_tables.sql",
                 "/udate_balance.sql"}, executionPhase = Sql.ExecutionPhase.BEFORE_TEST_METHOD)
 public class UpdateBalanceWalletOutboxProcessorITest {

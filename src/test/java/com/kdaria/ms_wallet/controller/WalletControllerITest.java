@@ -1,5 +1,6 @@
-package com.kdaria.ms_wallet;
+package com.kdaria.ms_wallet.controller;
 
+import com.kdaria.ms_wallet.config.AppTest;
 import com.kdaria.ms_wallet.en.OperationType;
 import com.kdaria.ms_wallet.presistence.entity.*;
 import com.kdaria.ms_wallet.presistence.repository.*;
@@ -17,7 +18,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 
-@SpringBootTest
+@AppTest
 @AutoConfigureMockMvc
 @Sql(scripts = {"/clear_tables.sql",
                 "/get_wallet.sql"}, executionPhase = Sql.ExecutionPhase.BEFORE_TEST_METHOD)
