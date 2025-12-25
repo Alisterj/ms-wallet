@@ -4,9 +4,9 @@ import com.kdaria.ms_wallet.domain.exception.*;
 import com.kdaria.ms_wallet.domain.mapper.OperationWalletMapper;
 import com.kdaria.ms_wallet.domain.model.*;
 import com.kdaria.ms_wallet.domain.port.*;
-import com.kdaria.ms_wallet.en.OperationType;
+import com.kdaria.ms_wallet.enums.OperationType;
 import com.kdaria.ms_wallet.domain.command.UpdateBalanceWalletCommand;
-import com.kdaria.ms_wallet.presistence.entity.WalletEntity;
+import com.kdaria.ms_wallet.utils.Utils;
 import jakarta.validation.constraints.NotNull;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -24,11 +24,10 @@ public class UpdateBalanceWalletUseCase {
     Wallet wallet = walletProvider.findWalletById(command.walletId())
       .orElseThrow(() -> new WalletNotFoundException("the wallet was not found", command.walletId()));
 
-    if (command.operationType() == OperationType.WITHDRAW
-        && wallet.getAmount().compareTo(command.amount()) < 0) {
+    if (Utils.invalidWithdrawal(command.operationType(), wallet.getBalance(), command.amount())) {
       throw new InsufficientFundsException(
         String.format("Insufficient funds: balance is %s, attempted to withdraw %s",
-          wallet.getAmount(),
+          wallet.getBalance(),
           command.amount()
         ));
     }

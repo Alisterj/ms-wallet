@@ -1,13 +1,12 @@
-package com.kdaria.ms_wallet.presistence.entity;
+package com.kdaria.ms_wallet.persistence.entity;
 
-import com.kdaria.ms_wallet.en.OperationType;
+import com.kdaria.ms_wallet.enums.OperationType;
 import jakarta.persistence.*;
 import lombok.*;
 import org.jetbrains.annotations.NotNull;
 
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
-import java.util.UUID;
 
 @Entity
 @Getter

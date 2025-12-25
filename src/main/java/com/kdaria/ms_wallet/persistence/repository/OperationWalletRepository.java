@@ -1,6 +1,6 @@
-package com.kdaria.ms_wallet.presistence.repository;
+package com.kdaria.ms_wallet.persistence.repository;
 
-import com.kdaria.ms_wallet.presistence.entity.OperationWalletEntity;
+import com.kdaria.ms_wallet.persistence.entity.OperationWalletEntity;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.*;
 

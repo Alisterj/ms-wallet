@@ -1,8 +1,7 @@
-package com.kdaria.ms_wallet.presistence.mapper;
+package com.kdaria.ms_wallet.persistence.mapper;
 
-import com.kdaria.ms_wallet.presistence.entity.*;
+import com.kdaria.ms_wallet.persistence.entity.*;
 import com.kdaria.ms_wallet.domain.model.OperationWallet;
-import org.jetbrains.annotations.NotNull;
 import org.mapstruct.*;
 
 @Mapper(componentModel = "spring")

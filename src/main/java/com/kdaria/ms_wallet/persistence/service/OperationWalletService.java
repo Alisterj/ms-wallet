@@ -1,10 +1,10 @@
-package com.kdaria.ms_wallet.presistence.service;
+package com.kdaria.ms_wallet.persistence.service;
 
 import com.kdaria.ms_wallet.domain.model.OperationWallet;
 import com.kdaria.ms_wallet.domain.port.OperationWalletProvider;
-import com.kdaria.ms_wallet.presistence.entity.*;
-import com.kdaria.ms_wallet.presistence.mapper.OperationWalletEntityMapper;
-import com.kdaria.ms_wallet.presistence.repository.*;
+import com.kdaria.ms_wallet.persistence.entity.*;
+import com.kdaria.ms_wallet.persistence.mapper.OperationWalletEntityMapper;
+import com.kdaria.ms_wallet.persistence.repository.*;
 import lombok.RequiredArgsConstructor;
 import org.jetbrains.annotations.NotNull;
 import org.springframework.data.domain.*;

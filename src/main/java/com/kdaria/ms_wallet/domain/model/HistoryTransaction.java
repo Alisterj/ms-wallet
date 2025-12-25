@@ -1,7 +1,6 @@
 package com.kdaria.ms_wallet.domain.model;
 
-import com.kdaria.ms_wallet.en.OperationType;
-import jakarta.persistence.*;
+import com.kdaria.ms_wallet.enums.OperationType;
 import lombok.*;
 import org.jetbrains.annotations.*;
 

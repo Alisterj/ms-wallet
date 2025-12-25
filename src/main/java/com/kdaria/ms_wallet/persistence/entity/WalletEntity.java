@@ -1,4 +1,4 @@
-package com.kdaria.ms_wallet.presistence.entity;
+package com.kdaria.ms_wallet.persistence.entity;
 
 import jakarta.persistence.*;
 import lombok.*;

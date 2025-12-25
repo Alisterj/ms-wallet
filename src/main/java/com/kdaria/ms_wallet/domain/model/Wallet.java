@@ -1,6 +1,6 @@
 package com.kdaria.ms_wallet.domain.model;
 
-import com.kdaria.ms_wallet.en.OperationType;
+import com.kdaria.ms_wallet.enums.OperationType;
 import lombok.*;
 import org.jetbrains.annotations.*;
 
@@ -19,5 +19,5 @@ public class Wallet {
   private OperationType operationType;
 
   @NotNull
-  private BigDecimal amount;
+  private BigDecimal balance;
 }

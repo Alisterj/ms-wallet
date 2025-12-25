@@ -20,7 +20,7 @@ public class GetWalletBalanceUseCase {
   @Transactional(readOnly = true)
   public BigDecimal getBalance(@NotNull UUID walletId) {
     return walletProvider.findWalletById(walletId)
-      .map(Wallet::getAmount)
+      .map(Wallet::getBalance)
       .orElseThrow(() -> new WalletNotFoundException("the wallet was not found", walletId));
   }
 }

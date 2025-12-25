@@ -1,12 +1,11 @@
 package com.kdaria.ms_wallet.controller;
 
 import com.kdaria.ms_wallet.config.AppTest;
-import com.kdaria.ms_wallet.en.OperationType;
-import com.kdaria.ms_wallet.presistence.entity.*;
-import com.kdaria.ms_wallet.presistence.repository.*;
+import com.kdaria.ms_wallet.enums.OperationType;
+import com.kdaria.ms_wallet.persistence.entity.*;
+import com.kdaria.ms_wallet.persistence.repository.*;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.webmvc.test.autoconfigure.AutoConfigureMockMvc;
 import org.springframework.test.context.jdbc.Sql;
 import org.springframework.test.web.servlet.MockMvc;

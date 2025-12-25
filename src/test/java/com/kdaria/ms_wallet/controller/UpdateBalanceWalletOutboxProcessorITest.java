@@ -2,13 +2,10 @@ package com.kdaria.ms_wallet.controller;
 
 import com.kdaria.ms_wallet.adapter.outbox.UpdateBalanceWalletOutboxProcessor;
 import com.kdaria.ms_wallet.config.AppTest;
-import com.kdaria.ms_wallet.presistence.entity.*;
-import com.kdaria.ms_wallet.presistence.repository.*;
+import com.kdaria.ms_wallet.persistence.entity.*;
+import com.kdaria.ms_wallet.persistence.repository.*;
 import org.junit.jupiter.api.*;
-import org.junit.jupiter.api.extension.ExtendWith;
-import org.mockito.junit.jupiter.MockitoExtension;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.jdbc.Sql;
 
 import java.util.*;
@@ -16,8 +13,7 @@ import java.util.*;
 import static org.assertj.core.api.Assertions.assertThat;
 
 @AppTest
-@Sql(scripts = {"/clear_tables.sql",
-                "/udate_balance.sql"}, executionPhase = Sql.ExecutionPhase.BEFORE_TEST_METHOD)
+@Sql(scripts = {"/clear_tables.sql", "/update_balance.sql"}, executionPhase = Sql.ExecutionPhase.BEFORE_TEST_METHOD)
 public class UpdateBalanceWalletOutboxProcessorITest {
   @Autowired
   private UpdateBalanceWalletOutboxProcessor processor;
